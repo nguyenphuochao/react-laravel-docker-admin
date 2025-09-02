@@ -14,7 +14,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        return UserResource::collection(User::paginate()); // default per_page = 15
+        return UserResource::collection(User::with("role")->paginate()); // default per_page = 15
     }
 
     public function store(UserCreateRequest $request)
