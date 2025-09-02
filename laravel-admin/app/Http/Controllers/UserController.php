@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\UserCreateRequest;
 use App\Http\Requests\UserUpdateRequest;
+use App\Http\Resources\UserResource;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -13,7 +14,7 @@ class UserController extends Controller
 {
     public function index()
     {
-        return User::paginate(); // default per_page = 15
+        return UserResource::collection(User::paginate()); // default per_page = 15
     }
 
     public function store(UserCreateRequest $request)
@@ -23,12 +24,12 @@ class UserController extends Controller
                 + ["password" => Hash::make(1234)]
         );
 
-        return response($user, Response::HTTP_CREATED);
+        return response(new UserResource($user), Response::HTTP_CREATED);
     }
 
     public function show($id)
     {
-        return User::find($id);
+        return new UserResource(User::find($id));
     }
 
     public function update(UserUpdateRequest $request, $id)
@@ -37,7 +38,8 @@ class UserController extends Controller
 
         $user->update($request->only("first_name", "last_name", "email"));
 
-        return \response($user, Response::HTTP_ACCEPTED); // 202 Accepted → Dùng khi server chỉ nhận request nhưng chưa xử lý xong.
+        // 202 Accepted → Dùng khi server chỉ nhận request nhưng chưa xử lý xong
+        return \response(new UserResource($user), Response::HTTP_ACCEPTED);
     }
 
     public function destroy($id)
