@@ -2,6 +2,10 @@ body {
   font-size: .875rem;
 }
 
+.container {
+  width: 700px;
+}
+
 .feather {
   width: 16px;
   height: 16px;
