@@ -11,10 +11,10 @@ const Login = () => {
     const submit = async (e: SyntheticEvent) => {
         e.preventDefault();
 
-        const response = await axios.post('http://localhost:8000/api/login', {
+        const response = await axios.post('login', {
             email,
             password
-        }, { withCredentials: true });
+        });
 
         setRedirect(true);
 
@@ -27,8 +27,11 @@ const Login = () => {
 
     return (
         <div className="container mt-5">
+
             <h2>Login</h2>
+
             <form onSubmit={submit}>
+                
                 <div className="mb-3">
                     <label htmlFor="email" className="form-label">Email</label>
                     <input type="text" className="form-control" id="email"
