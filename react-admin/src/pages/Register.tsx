@@ -1,5 +1,6 @@
 import axios from 'axios';
 import React, { Component, SyntheticEvent } from 'react';
+import { Link, Navigate } from 'react-router-dom';
 
 class Register extends Component {
 
@@ -8,6 +9,9 @@ class Register extends Component {
     email = '';
     password = '';
     password_confirm = '';
+    state = {
+        redirect: false
+    };
 
     submit = async (e: SyntheticEvent) => {
         e.preventDefault();
@@ -20,10 +24,19 @@ class Register extends Component {
             password_confirm: this.password_confirm
         });
 
+        this.setState({
+            redirect: true
+        });
+
         console.log(response);
     }
 
     render() {
+
+        if(this.state.redirect) {
+            return <Navigate to="/login" />
+        }
+
         return (
             <div className="container mt-5">
                 <h2>Register</h2>
@@ -59,6 +72,12 @@ class Register extends Component {
                     </div>
 
                     <button type="submit" className="btn btn-primary">Register</button>
+
+                    <div className="mt-3">
+                        <span>Back to </span>
+                        <Link to="/login">Login</Link>
+                    </div>
+
                 </form>
             </div>
 

@@ -21,6 +21,7 @@ class AuthController extends Controller
             "last_name" => $request->input("last_name"),
             "email" => $request->input("email"),
             "password" => Hash::make($request->input("password")),
+            "role_id" => 1
         ]);
 
         return response(new UserResource($user), Response::HTTP_CREATED);
