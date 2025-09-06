@@ -8,10 +8,9 @@ const Nav = () => {
     const [user, setUser] = useState(new User());
 
     useEffect(() => {
-        // eslint-disable-next-line @typescript-eslint/no-unused-expressions
         (
             async () => {
-                const { data } = await axios.get<User>('user');
+                const { data } = await axios.get<any>('user');
 
                 setUser(new User(
                     data.id,
@@ -24,6 +23,11 @@ const Nav = () => {
         )();
     }, []);
 
+    const logout = async () => {
+        if (window.confirm('Are you sure you want to logout?')) {
+            await axios.post('logout', {});
+        }
+    }
 
     return (
         <nav className="navbar navbar-dark sticky-top bg-dark flex-md-nowrap p-0 shadow">
@@ -31,7 +35,7 @@ const Nav = () => {
 
             <ul className="my-2 my-md-0 mr-md-3">
                 <Link className="p-2 text-white" to="#">{user.name}</Link>
-                <Link className="p-2 text-white" to="#">Sign out</Link>
+                <Link className="p-2 text-white" to="#" onClick={logout}>Sign out</Link>
             </ul>
 
         </nav>

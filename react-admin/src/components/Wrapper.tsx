@@ -1,10 +1,8 @@
-import React, { Component, PropsWithChildren } from "react";
+import React, { Component } from "react";
 import Nav from './Nav';
 import Menu from './Menu';
 
-type WrapperProps = PropsWithChildren<{}>;
-
-class Wrapper extends Component<WrapperProps> {
+class Wrapper extends Component {
     render() {
         return (
             <>
@@ -13,7 +11,7 @@ class Wrapper extends Component<WrapperProps> {
                     <div className="row">
                         <Menu />
                         <main className="col-md-9 ms-sm-auto col-lg-10 px-md-4">
-                           {this.props.children}
+                            {this.props.children}
                         </main>
                     </div>
                 </div>

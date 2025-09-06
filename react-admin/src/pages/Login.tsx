@@ -1,6 +1,6 @@
 import axios from "axios";
 import { SyntheticEvent, useState } from "react";
-import { Link, Navigate } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 
 const Login = () => {
 
@@ -22,7 +22,7 @@ const Login = () => {
     }
 
     if (redirect) {
-        return <Navigate to="/" />
+        return <Redirect to="/" />
     }
 
     return (

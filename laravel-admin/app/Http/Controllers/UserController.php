@@ -20,7 +20,7 @@ class UserController extends Controller
     public function store(UserCreateRequest $request)
     {
         $user = User::create(
-            $request->only("first_name", "last_name", "email")
+            $request->only("first_name", "last_name", "email", "role_id")
                 + ["password" => Hash::make(1234)]
         );
 

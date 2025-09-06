@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { Component, SyntheticEvent } from 'react';
-import { Link, Navigate } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 class Register extends Component {
 
@@ -34,7 +34,7 @@ class Register extends Component {
     render() {
 
         if(this.state.redirect) {
-            return <Navigate to="/login" />
+            return <Redirect to="/login" />
         }
 
         return (
