@@ -1,11 +1,12 @@
 import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import { User } from '../models/user';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 
 const Nav = () => {
 
     const [user, setUser] = useState(new User());
+    const [redirect, setRedirect] = useState(false);
 
     useEffect(() => {
         (
@@ -26,7 +27,12 @@ const Nav = () => {
     const logout = async () => {
         if (window.confirm('Are you sure you want to logout?')) {
             await axios.post('logout', {});
+            setRedirect(true);
         }
+    }
+
+    if(redirect) {
+        return <Redirect to="/login" />
     }
 
     return (
