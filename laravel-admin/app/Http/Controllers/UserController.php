@@ -29,7 +29,8 @@ class UserController extends Controller
 
     public function show($id)
     {
-        return new UserResource(User::find($id));
+        $user = User::find($id);
+        return new UserResource($user->load('role'));
     }
 
     public function update(UserUpdateRequest $request, $id)
