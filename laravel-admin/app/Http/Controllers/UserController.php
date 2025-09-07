@@ -37,7 +37,7 @@ class UserController extends Controller
     {
         $user = User::find($id);
 
-        $user->update($request->only("first_name", "last_name", "email"));
+        $user->update($request->only('first_name', 'last_name', 'email', 'role_id'));
 
         // 202 Accepted → Dùng khi server chỉ nhận request nhưng chưa xử lý xong
         return \response(new UserResource($user), Response::HTTP_ACCEPTED);

@@ -22,7 +22,7 @@ const Users = () => {
                 const { data } = await axios.get<any>(`users?page=${page}`);
 
                 setUsers(data.data);
-                setLastPage(data.last_page);
+                setLastPage(data.meta.last_page);
                 setTotalPages(Math.ceil(data.meta.total / data.meta.per_page));
 
             }
@@ -40,7 +40,6 @@ const Users = () => {
 
     const prev = (e: SyntheticEvent) => {
         e.preventDefault();
-
         if (page > 1) {
             setPage(page - 1);
         }
@@ -80,7 +79,7 @@ const Users = () => {
                                         <td>{user.email}</td>
                                         <td>{user.role.name}</td>
                                         <td>
-                                            <button className="btn btn-sm btn-outline-secondary">Edit</button>
+                                            <Link to={`/users/${user.id}/edit`} className="btn btn-sm btn-outline-secondary">Edit</Link>
                                             <button className="btn btn-sm btn-outline-danger"
                                                 onClick={() => del(user.id)}>Delete</button>
                                         </td>
