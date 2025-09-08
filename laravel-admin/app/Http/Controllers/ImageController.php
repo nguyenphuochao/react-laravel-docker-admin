@@ -11,7 +11,7 @@ class ImageController extends Controller
 {
     function upload(ImageUploadRequest $request)
     {
-        $file = $request->file('images');
+        $file = $request->file('image');
         $name = Str::random(10);
         $url = \Storage::putFileAs('images', $file, $name . '.' . $file->extension()); // $file->extension() -> .png .jpg
 

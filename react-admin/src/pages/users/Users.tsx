@@ -55,7 +55,7 @@ const Users = () => {
     return (
         <Wrapper>
 
-            <Link to={'/users/create'} className="btn btn-primary btn-sm mt-4">Create</Link>
+            <Link to={'/users/create'} className="btn btn-outline-primary btn-sm mt-4">Create</Link>
 
             <div className="table-responsive">
                 <table className="table table-striped table-sm">
