@@ -3,16 +3,27 @@ import Wrapper from '../../components/Wrapper';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import { Product } from '../../models/product';
+import Paginotor from '../../components/Paginator';
 
 const Products = () => {
 
-    const [products, setProducts] = useState([])
+    const [products, setProducts] = useState([]);
+    const [lastPage, setLastPage] = useState(0);
+    const [page, setPage] = useState(1);
+    const [totalPages, setTotalPages] = useState(0);
+
+    const pageNumbers = [];
+    for (let i = 1; i <= totalPages; i++) {
+        pageNumbers.push(i);
+    }
 
     useEffect(() => {
         (
             async () => {
                 const { data } = await axios.get<any>(`products`);
                 setProducts(data.data);
+                setLastPage(data.meta.last_page);
+                setTotalPages(Math.ceil(data.meta.total / data.meta.per_page));
             }
         )();
     }, []);
@@ -72,6 +83,8 @@ const Products = () => {
                     </tbody>
                 </table>
             </div>
+
+            <Paginotor page={page} lastPage={lastPage} pageChaned={setPage} pageNumbers={pageNumbers} />
 
         </Wrapper>
     );
