@@ -23,8 +23,8 @@ const Paginator = (props: { page: number, lastPage: number, pageChaned: (page: n
                 <li className="page-item"><Link className="page-link" to="#" onClick={prev}>Previous</Link></li>
 
                 {
-                    props.pageNumbers.map(page =>
-                        <li className="page-item"><Link className="page-link" to="#">{page}</Link></li>
+                    props.pageNumbers.map(p =>
+                        <li className={`page-item ${props.page === p ? 'active' : ''}`} key={`page}`}><Link className="page-link" to="#" onClick={() => props.pageChaned(p)}>{p}</Link></li>
                     )
                 }
 

@@ -1,9 +1,9 @@
-import { SyntheticEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import Wrapper from "../../components/Wrapper";
 import axios from "axios";
 import { User } from "../../models/user";
 import { Link } from "react-router-dom";
-import Paginotor from "../../components/Paginator";
+import Paginator from "../../components/Paginator";
 
 const Users = () => {
 
@@ -79,7 +79,7 @@ const Users = () => {
                 </table>
             </div>
 
-            <Paginotor page={page} lastPage={lastPage} pageChaned={setPage} pageNumbers={pageNumbers} />
+            <Paginator page={page} lastPage={lastPage} pageChaned={setPage} pageNumbers={pageNumbers} />
 
         </Wrapper>
     )
