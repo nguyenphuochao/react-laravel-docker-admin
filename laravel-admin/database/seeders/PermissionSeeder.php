@@ -15,14 +15,14 @@ class PermissionSeeder extends Seeder
     public function run()
     {
         Permission::insert([
-            ["name" => "view_users"],
-            ["name" => "edit_users"],
-            ["name" => "view_roles"],
-            ["name" => "edit_roles"],
-            ["name" => "view_products"],
-            ["name" => "edit_products"],
-            ["name" => "view_orders"],
-            ["name" => "edit_orders"],
+            ['name' => 'iew_users'],
+            ['name' => 'dit_users'],
+            ['name' => 'iew_roles'],
+            ['name' => 'dit_roles'],
+            ['name' => 'iew_products'],
+            ['name' => 'dit_products'],
+            ['name' => 'iew_orders'],
+            ['name' => 'dit_orders'],
         ]);
     }
 }
