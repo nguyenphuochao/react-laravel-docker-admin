@@ -49,7 +49,7 @@ const Products = () => {
                             <th>Title</th>
                             <th>Description</th>
                             <th>Price</th>
-                            <th>Action</th>
+                            <th style={{ width: '10%' }}>Action</th>
                         </tr>
                     </thead>
 
