@@ -12,6 +12,7 @@ import RoleEdit from './pages/roles/RoleEdit';
 import Products from './pages/products/Products';
 import ProductCreate from './pages/products/ProductCreate';
 import ProductEdit from './pages/products/ProductEdit';
+import Orders from './pages/orders/Orders';
 
 function App() {
 	return (
@@ -29,6 +30,7 @@ function App() {
 				<Route path='/products' exact component={Products} />
 				<Route path='/products/create' component={ProductCreate} />
 				<Route path='/products/:id/edit' component={ProductEdit} />
+				<Route path='/orders' component={Orders} />
 			</BrowserRouter>
 		</div>
 
