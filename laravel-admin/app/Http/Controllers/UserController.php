@@ -16,13 +16,13 @@ class UserController extends Controller
     {
         $this->authorize('view', 'users');
 
-        return UserResource::collection(User::with("role")->paginate()); // default per_page = 15
+        return UserResource::collection(User::with('role')->paginate()); // default per_page = 15
     }
 
     public function store(UserCreateRequest $request)
     {
         $user = User::create(
-            $request->only("first_name", "last_name", "email", "role_id")
+            $request->only('first_name', 'last_name', 'email', 'role_id')
                 + ["password" => Hash::make(1234)]
         );
 
@@ -32,6 +32,9 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
+
+        if (!$user) return response(['message' => 'User not found'], 404);
+
         return new UserResource($user->load('role'));
     }
 
