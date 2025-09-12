@@ -14,6 +14,8 @@ class UserController extends Controller
 {
     public function index()
     {
+        $this->authorize('view', 'users');
+
         return UserResource::collection(User::with("role")->paginate()); // default per_page = 15
     }
 
@@ -35,6 +37,8 @@ class UserController extends Controller
 
     public function update(UserUpdateRequest $request, $id)
     {
+        $this->authorize('edit', 'users');
+
         $user = User::find($id);
 
         $user->update($request->only('first_name', 'last_name', 'email', 'role_id'));
